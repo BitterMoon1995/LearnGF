@@ -1,0 +1,38 @@
+0.
+面向工程化框架Go Framework学习
+
+1.
+代码分层设计模式为三层架构设计（3-Tire Architecture）
+表示层 - User Interface
+业务逻辑层 - Business Logic Layer & 模型定义层 - Model
+数据访问层 - Data Access Layer
+
+2.
+目录结构为
+├── app 所有的业务逻辑存放目录。
+│   ├── api 接收/解析用户输入参数的入口/接口层。
+│   ├── dao 数据库的访问操作，仅包含最基础的数据库CURD方法
+│   ├── model 数据管理层，仅用于操作管理数据，如数据库操作。
+│   └── service 业务逻辑封装层，实现特定的业务需求，可供不同的包调用。
+├── boot 用于项目初始化参数设置，往往作为main.go中第一个被import的包。
+├── config 所有的配置文件存放目录。
+├── docker
+├── document
+├── i18n
+├── library
+├── packed
+├── public
+├── router 用于路由统一的注册管理。
+├── template
+├── Dockerfile 云原生时代用于编译生成Docker镜像的描述文件。
+├── go.mod
+└── main.go 程序入口文件。
+
+3.
+项目初始化方式为gf init LearnGF
+注意要先安装gf-cli并install，默认install到windows即可
+
+4.
+学习路线及相应路径：
+1.路由管理  router/router_test.go
+2.请求输入  app/api/param_receive/param receive.go
