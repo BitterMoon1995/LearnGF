@@ -1,0 +1,2 @@
+[redis]
+    default = "192.168.174.129:6379,0,godz1995?idleTimeout=600"

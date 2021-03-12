@@ -1,0 +1,7 @@
+[redis]
+    default = "192.168.174.129:6379,0,godz1995?idleTimeout=600"
+
+[logger]
+    path   = "E:/GoLand Projects/学习/LearnGF/log" #得用绝对路径
+    level  = "all" #日志级别
+    file   = "{Y-m-d}.log" #日志文件格式

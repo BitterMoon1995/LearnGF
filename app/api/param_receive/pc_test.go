@@ -138,3 +138,47 @@ func TestObjectVerify(t *testing.T) {
 	server.SetPort(9000)
 	server.Run()
 }
+
+/*
+自定义变量
+开发者可以在请求中自定义一些变量设置，自定义变量的获取优先级是最高的，可以覆盖原有的客户端提交参数。
+自定义变量往往也可以做请求流程的变量共享，但是需要注意的是该变量会成为请求参数的一部分，是对业务执行流程公开的变量。
+*/
+func TestCustomParam(t *testing.T) {
+	server := g.Server()
+
+	server.Group("/girl", func(group *ghttp.RouterGroup) {
+		group.Middleware(middleware1, middleware2)
+		group.ALL("/info", func(request *ghttp.Request) {
+			name := request.GetParamVar("name")
+			age := request.GetParamVar("age")
+			request.Response.Writefln("%s  %s",
+				name.String(),
+				age.String())
+		})
+	})
+
+	server.SetPort(4396)
+	server.Run()
+}
+
+/*
+上下文
+在GF框架中，我们推荐使用Context上下文对象来处理流程共享的上下文变量，
+甚至将该对象进一步传递到依赖的各个模块方法中。该Context对象类型实现了标准库的context.Context接口，
+该接口往往会作为模块间调用方法的第一个参数，该接口参数也是Golang官方推荐的在模块间传递上下文变量的推荐方式。
+*/
+func TestContext(t *testing.T) {
+	server := g.Server()
+
+	server.Group("/user", func(group *ghttp.RouterGroup) {
+		group.Middleware(contextMidWare)
+		group.ALL("/id", func(request *ghttp.Request) {
+			userId := request.GetCtxVar("userId")
+			request.Response.Writeln(userId)
+		})
+	})
+
+	server.SetPort(4396)
+	server.Run()
+}

@@ -26,3 +26,4 @@
         Path   = "/tmp/log/gf-app/sql"
         Level  = "all"
         Stdout = true
+

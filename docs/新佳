@@ -1,5 +1,6 @@
 0.
-面向工程化框架Go Framework学习
+面向工程化框架Go Framework学习;
+golang ffmpeg调用
 
 1.
 代码分层设计模式为三层架构设计（3-Tire Architecture）
@@ -35,4 +36,7 @@
 4.
 学习路线及相应路径：
 1.路由管理  router/router_test.go
-2.请求输入  app/api/param_receive/param receive.go
+2.请求输入  app/api/param_receive/pc_test.go
+3.数据返回  app/api/data_return/dr_test.go
+4.cookie、session&redis、context、异常处理    app/api/cookie_session/cs_test.go
+5.http client   app/api/http_client
